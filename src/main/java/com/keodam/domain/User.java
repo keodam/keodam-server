@@ -1,21 +1,28 @@
 package com.keodam.domain;
 
 import jakarta.persistence.Entity;
-import lombok.*;
+import lombok.Builder;
+import lombok.Data;
 
 @Entity
-@Getter
+@Data
 public class User{
     private String username;
+    private String nickname;
     private String password;
     private String email;
-    private LoginMethod loginMethod;
+    private Role authority;
+    private SocialType socialType;
 
     @Builder
-    public User(String username, String password, String email, LoginMethod loginMethod) {
+    public User(String username, String nickname, String password, String email, SocialType socialType, Role authority) {
         this.username = username;
+        this.nickname = nickname;
         this.password = password;
         this.email = email;
-        this.loginMethod = loginMethod;
+        this.socialType = socialType;
+        this.authority = authority;
     }
+
+
 }
